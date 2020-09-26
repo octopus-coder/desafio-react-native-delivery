@@ -1,10 +1,8 @@
-import React from 'react';
-
 import { render, wait } from '@testing-library/react-native';
 import AxiosMock from 'axios-mock-adapter';
-import api from '../../services/api';
-
+import React from 'react';
 import Favorites from '../../pages/Favorites';
+import api from '../../services/api';
 
 const mockedNavigate = jest.fn();
 

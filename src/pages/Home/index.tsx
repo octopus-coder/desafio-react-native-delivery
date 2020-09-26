@@ -1,21 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-
 import Icon from 'react-native-vector-icons/Feather';
-
-import {
-  Container,
-  BackgroundImage,
-  Title,
-  NavigationButton,
-  ButtonText,
-  IconContainer,
-} from './styles';
-
 import Background from '../../assets/home-background.png';
 import Logo from '../../assets/logo.png';
+import {
+  BackgroundImage,
+  ButtonText,
+  Container,
+  IconContainer,
+  NavigationButton,
+  Title,
+} from './styles';
 
 const Home: React.FC = () => {
   const navigation = useNavigation();

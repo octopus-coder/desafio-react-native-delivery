@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
-
 import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
-
 import {
   Container,
+  Food,
+  FoodContent,
+  FoodDescription,
+  FoodImageContainer,
+  FoodList,
+  FoodPricing,
+  FoodsContainer,
+  FoodTitle,
   Header,
   HeaderTitle,
-  FoodsContainer,
-  FoodList,
-  Food,
-  FoodImageContainer,
-  FoodContent,
-  FoodTitle,
-  FoodDescription,
-  FoodPricing,
 } from './styles';
 
 interface Food {
@@ -33,6 +31,14 @@ const Orders: React.FC = () => {
   useEffect(() => {
     async function loadOrders(): Promise<void> {
       // Load orders from API
+      const { data: loadedOrders } = await api.get('/orders');
+
+      setOrders(
+        loadedOrders.map((order: Food) => ({
+          ...order,
+          formattedValue: formatValue(order.price),
+        })),
+      );
     }
 
     loadOrders();
@@ -59,7 +65,7 @@ const Orders: React.FC = () => {
               <FoodContent>
                 <FoodTitle>{item.name}</FoodTitle>
                 <FoodDescription>{item.description}</FoodDescription>
-                <FoodPricing>{item.formattedPrice}</FoodPricing>
+                <FoodPricing>{item.formattedValue}</FoodPricing>
               </FoodContent>
             </Food>
           )}
